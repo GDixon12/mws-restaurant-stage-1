@@ -1,32 +1,57 @@
-self.addEventListener('install',
-function(event) {
-	/*Will start doig stuff*/
-});
-self.addEventListener('activate',
-function(event) {
+var cacheName = "v1";
+var cacheFiles = [
+"/",
+"/index.html",
+"/restaurant.html"
+"/css/styles.css",
+"https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic",
+"/js/dbhelper.js",
+"/js/main.js",
+"/img/img.jpg",
+"/restaurant_info.js",
+"/swreg.js",
+"/js/service-worker.js",
+"/data.restaurant.json",
+"/js/"
+]
+self.addEventListener("install", function(e) {
+	console.log("[ServiceWorker] installed")
+	e.waitUntil(
+		caches.open(cacheName).then(function(cache) {
+			console.log("[ServiceWorker] Caching cacheFiles");
+			return cache.addAll(cacheFiles);
+		})
+	)
 });
 
-self.addEventListener('fetch',
-function(event) {
-	event.respondWith(
-	caches.match(event.request)
-	);
+self.addEventListener("activate", function(e) {
+	console.log("[ServiceWorker] Activated")
+	
+	e.waitUntil(
+		cache.keys().then(function(cacheNames) {
+			return Promise.all(cacheNames.map(function(thisCacheName) {
+				if (thisCacheName !== cacheName) {
+					console.log([ServiceWorker]" Removing Cached Files from ", thisCacheName);
+					return caches.delete(thisCacheName);
+				}
+			}))
+		})
+	)
 });
-self.addEventListener('sync',
-function(event) {
-	if (event.tag ==='foo') {
-		event.waitUntil(doSomething()); /* Will return a promise*/
-	}
+
+self.addEventListener("fetch",function(e) {
+	console.log("[ServiceWorker] fetching", e.request.url);
+	e.respondWith(
+		caches.match(e.request).then(function(response) {
+			console.log("[ServiceWorker] Found in cache" e.request.url);
+			return response;
+		}
+		
+		fetch(e.request);
+		})
+	)
 });
-/*Where the service worker look for push events*/
-self.addEventListener('push',
-function(event) {
-	event.waitUntil(self.registration.showNotification(
-	'You Got It'
-	options /*This is your to show customization from the data that push from the server*/
-	);
-	);
-})
+
 
 
 
