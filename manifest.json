@@ -1,0 +1,12 @@
+{
+	"name": "Restaurant Review",
+	"short_name" : "Restaurant Review",
+	"start_url": "/index.html",
+	"icons": [...],
+	"background_color": "#317EFB",
+	"theme_color": "#317EFB",
+	"display": "standalone",
+	"orientation": "portrait"
+	"scope" ": "/"
+}
+

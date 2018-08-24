@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <!-- Normalize.css for better cross-browser consistency -->
-  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+<meta name="Description" content="Restaurant App" src="https://github.com/GDixon12/mws-restaurant-stage-1">
+<meta charset="utf-8">
+<meta name="theme-color" content="#317EFB"/>
+<!-- Normalize.css for better cross-browser consistency -->
+<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <!-- Main CSS file -->
-  <link rel="stylesheet" href="css/styles.css" type="text/css">
-  <script type="application/javascript" charset="utf-8" src="js/swreg.js"></script>   
-  <title>Restaurant Info</title>
+<link rel="stylesheet" href="css/styles.css" type="text/css">  
+<link rel="icon" size="192x192" href="img.jpg">
+<link rel="manifest" href="/manifest.json">
+<script type="application/javascript" charset="utf-8" src="js/swreg.js"></script>
+<title>Restaurant Info</title>
 </head>
 
 <body class="inside">
   <!-- Beginning header -->
-  <header>
+  <header aria-label="header">
     <!-- Beginning nav -->
-    <nav>
+    <nav aria-labelledby="title">
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
@@ -30,17 +35,19 @@
   <!-- Beginning main -->
   <main id="maincontent">
     <!-- Beginning map -->
-    <section id="map-container">
+    <section id="map-container" aria-label="Google Map of Restaurant">
       <div id="map"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
-    <section id="restaurant-container">
+    <section id="restaurant information" aria-labelledby="Restaurant by name">
+	<div id="restaurant-container"> 
       <h1 id="restaurant-name">Restaurant Reviews</h1>
       <img id="restaurant-img">
       <p id="restaurant-cuisine"></p>
       <p id="restaurant-address"></p>
       <table id="restaurant-hours"></table>
+	  </div>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
@@ -52,7 +59,7 @@
   <!-- End main -->
 
   <!-- Beginning footer -->
-  <footer id="footer">
+  <footer id="footer" aria-label="footer">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
   <!-- End footer -->
@@ -67,9 +74,16 @@
   type="text/javascript"></script>
   <!-- End scripts -->
 
+
 </body>
 
 
 
 </html>
+
+
+
+
+
+
 
