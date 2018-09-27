@@ -1,4 +1,4 @@
-var cacheName = 'mws-restaurant-v1';
+var cacheName = 'mws-restaurant-v5';
 var cacheFiles = [
 '/',
 '/index.html',
