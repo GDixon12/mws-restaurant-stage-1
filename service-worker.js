@@ -1,4 +1,4 @@
-var cacheName = 'mws-restaurant-v6';
+var cacheName = 'mws-restaurant-v3';
 var cacheFiles = [
 '/',
 '/index.html',
@@ -40,18 +40,24 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
+		const requestUrl = new URL(e.request.url);
+	if (requestUrl.pathname == '/') {
+		e.respondWith(caches.match('index.html'));
+		return;
 	console.log('[ServiceWorker] fetching', e.request.url);
-	e.respondWith(
-		caches.match(e.request).then(function(response) {
-			if ( response ) {
-			console.log('[ServiceWorker] Found in cache', e.request.url);
-			return response;
+	}
+		if (requestUrl.pathname.startsWith('/restaurant.html')){
+			e.respondWith(caches.match('restaurant.html'));
+			return;
+			}
 		}
+		e.respondWith(loadCacheOrNetwork(e.request));
+		});
 		
-		return fetch(e.request);
-		}
-		)
-		);
+sefl.addEventListener('message', function (e) {
+	if (e.data && e.data.updated) {
+		self.skipWaiting();
+	}
 });
 
 
