@@ -6,7 +6,10 @@
   "dependencies": {
     "grunt-pagespeed": "^2.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babelify": "^10.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +24,3 @@
   },
   "homepage": "https://github.com/GDixon12/mws-restaurant-stage-1#readme"
 }
-
-
